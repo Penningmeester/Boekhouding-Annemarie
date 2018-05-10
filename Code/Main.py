@@ -13,6 +13,13 @@ Date:
 			Tijn Wijdoogen
 			Winsen Duker
 """
+#==============================================================================
+# #import own code modules
+#==============================================================================
+from Data_exploration import *
+
+
+
 ###########################################################
 ### Imports
 import numpy as np
@@ -20,7 +27,9 @@ import pandas as pd
 # import matplotlib.pyplot as plt
 # import scipy.optimize as opt
 # from pandas_datareader import data as web
-from Data_exploration import *
+
+
+
 #==============================================================================
 # Import data
 #==============================================================================
