@@ -49,9 +49,9 @@ def importdatabase():
 ### main
 def main():
     # Import data
-    #train,test  = importdatabase()
+    #test,train  = importdatabase()
     
-    #Data_exploration(train,test)
+    Data_exploration(train)
   
     print('\nFinished code')
 
