@@ -1,5 +1,25 @@
-def Dataexploration():
+def Data_exploration(train,test):
+    
+    
     print('Data is explored')
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     
 def main():
     print('Finished code')

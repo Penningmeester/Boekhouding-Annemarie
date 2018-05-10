@@ -48,12 +48,12 @@ def importdatabase():
 ###########################################################
 ### main
 def main():
-    # Magic numbers
+    # Import data
     #train,test  = importdatabase()
     
-    # Initialisation
-    # Output
-    print('Finished code')
+    #Data_exploration(train,test)
+  
+    print('\nFinished code')
 
 ###########################################################
 ### start main
