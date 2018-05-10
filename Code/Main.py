@@ -40,7 +40,8 @@ def importdatabase():
 ### main
 def main():
     # Magic numbers
-    
+    df_train, df_test  = importdatabase()
+    print(df_train.sample(5))
 
     # Initialisation
     # Output
