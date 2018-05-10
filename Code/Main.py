@@ -34,18 +34,17 @@ def importdatabase():
     
     return df_test, df_train
 
-
+        
 
 ###########################################################
 ### main
 def main():
     # Magic numbers
-    df_train, df_test  = importdatabase()
-    print(df_train.sample(5))
+    #train,test  = importdatabase()
 
     # Initialisation
     # Output
-    print('Done')
+    print('Finished code')
 
 ###########################################################
 ### start main
