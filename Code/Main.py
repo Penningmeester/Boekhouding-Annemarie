@@ -20,7 +20,7 @@ import pandas as pd
 # import matplotlib.pyplot as plt
 # import scipy.optimize as opt
 # from pandas_datareader import data as web
-from part1 import *
+from Data_exploration import *
 #==============================================================================
 # Import data
 #==============================================================================
