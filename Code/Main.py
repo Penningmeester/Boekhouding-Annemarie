@@ -49,8 +49,8 @@ def importdatabase():
 ### main
 def main():
     # Magic numbers
-    train,test  = importdatabase()
-    print(train.sample(6))
+    #train,test  = importdatabase()
+    
     # Initialisation
     # Output
     print('Finished code')
