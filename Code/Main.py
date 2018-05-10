@@ -26,8 +26,8 @@ import pandas as pd
 #==============================================================================
 def importdatabase():
     
-    df_train = pd.read_csv("Data/train.csv")
-    df_test = pd.read_csv("Data/test.csv")
+    df_train = pd.read_hdf("Data/train.hdf")
+    df_test = pd.read_hdf("Data/test.hdf")
     
     df_test['date_time'] = pd.to_datetime(df_test['date_time'])
     df_train['date_time'] = pd.to_datetime(df_train['date_time'])
