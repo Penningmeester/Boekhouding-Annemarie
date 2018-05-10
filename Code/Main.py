@@ -20,7 +20,7 @@ import pandas as pd
 # import matplotlib.pyplot as plt
 # import scipy.optimize as opt
 # from pandas_datareader import data as web
-
+from part1 import *
 #==============================================================================
 # Import data
 #==============================================================================
@@ -34,14 +34,14 @@ def importdatabase():
     
     return df_test, df_train
 
-        
+
 
 ###########################################################
 ### main
 def main():
     # Magic numbers
-    #train,test  = importdatabase()
-
+    train,test  = importdatabase()
+    print(train.sample(6))
     # Initialisation
     # Output
     print('Finished code')
