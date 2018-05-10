@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 test
 
 
@@ -16,4 +15,7 @@ print('poah')
 
 Henkie
 
+
 pepijn
+tijn
+
