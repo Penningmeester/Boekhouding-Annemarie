@@ -24,7 +24,15 @@ import pandas as pd
 #==============================================================================
 # Import data
 #==============================================================================
-
+def importdatabase():
+    
+    df_train = pd.read_csv("Data/train.csv")
+    df_test = pd.read_csv("Data/test.csv")
+    
+    df_test['date_time'] = pd.to_datetime(df_test['date_time'])
+    df_train['date_time'] = pd.to_datetime(df_train['date_time'])
+    
+    return df_test, df_train
 
 
 
