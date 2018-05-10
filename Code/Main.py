@@ -44,7 +44,7 @@ def main():
 
     # Initialisation
     # Output
-
+    print('Done')
 
 ###########################################################
 ### start main
