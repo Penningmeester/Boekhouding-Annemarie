@@ -4,7 +4,7 @@ import model
 import pandas as pd
 import random
 from sklearn.ensemble import RandomForestClassifier
-from datetime import datetime as datetime
+
 
 
 
