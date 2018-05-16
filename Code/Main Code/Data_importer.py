@@ -55,9 +55,9 @@ def load_model(book_bool=True):
 
 def write_submission(recommendations, submission_file=None):
     if submission_file is None:
-        submission_path = get_paths()["submission_path"]
+        submission_path = location_lookup()["submission_path"]
     else:
-        path, file_name = os.path.split(get_paths()["submission_path"])
+        path, file_name = os.path.split(location_lookup()["submission_path"])
         submission_path = os.path.join(path, submission_file)
     rows = [(srch_id, prop_id)
         for srch_id, prop_id, rank_float
