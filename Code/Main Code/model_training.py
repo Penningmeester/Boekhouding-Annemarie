@@ -3,13 +3,12 @@ import Data_importer
 import model
 import pandas as pd
 import random
+import feature_engineering
 from sklearn.ensemble import RandomForestClassifier
 
 
 
 
-def feature_engineering():
-	print('done engineering')
 
 
 def main():
@@ -24,7 +23,7 @@ def main():
     click_trainset = train_set[train_set['click_bool']==1] # extract all clicks from training set
     click_rows = click_trainset.index.tolist()
     len_click = len(click_trainset.index)
-    
+
     # create two training sets of just 50% booking and random and 50% click and random
     book_trainset = book_trainset.append(train_set.iloc[random.sample(list(train_set.drop(book_rows).index), len_book)])
     click_trainset =click_trainset.append(train_set.iloc[random.sample(list(train_set.drop(click_rows).index), len_click)])
