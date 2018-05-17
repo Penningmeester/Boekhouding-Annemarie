@@ -7,7 +7,6 @@ import feature_engineering2 as feature_engineering
 
 
 
-
 def main():
     train = Data_importer.load_train_set()
     train = feature_engineering.main(train)
@@ -40,14 +39,14 @@ def main():
         
         print("Training the "+model_name+" Classifier...")
         feature_names = feature_engineering.get_features(train_sample, isBook)
-        features = train_sample[feature_names].values
-        target = train_sample[training_feature].values
+        x_train = train_sample[feature_names].values
+        y_train = train_sample[training_feature].values
         classifier = model.model()
-        classifier.fit(features, target)
+        classifier.fit(x_train, y_train)
         
         # print the time interval
         print("Saving the classifier...")
-        Data_importer.save_model(classifier, isBook)
+        Data_importer.dump_model(classifier, isBook)
 
 if __name__=="__main__":
     main()
