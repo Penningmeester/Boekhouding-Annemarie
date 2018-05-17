@@ -1,10 +1,7 @@
-import sys
 import Data_importer
 import model
-import pandas as pd
 import random
-import feature_engineering
-from sklearn.ensemble import RandomForestClassifier
+import feature_engineering2 as feature_engineering
 
 
 
@@ -13,7 +10,7 @@ from sklearn.ensemble import RandomForestClassifier
 
 def main():
     train = Data_importer.load_train_set()
-    feature_engineering(train)
+    train = feature_engineering.main(train)
     train_set = train.copy()
 
     book_trainset = train_set[train_set['booking_bool']==1] # extract all bookings from training set
@@ -42,7 +39,7 @@ def main():
             isBook = False
         
         print("Training the "+model_name+" Classifier...")
-        feature_names = get_features(train_sample, isBook)
+        feature_names = feature_engineering.get_features(train_sample, isBook)
         features = train_sample[feature_names].values
         target = train_sample[training_feature].values
         classifier = model.model()
