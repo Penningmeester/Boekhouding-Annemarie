@@ -2,8 +2,8 @@ import Data_importer
 import model
 import random
 import feature_engineering2 as feature_engineering
-
-
+import lightgbm as lgb
+from sklearn import model_selection
 
 
 
@@ -39,14 +39,15 @@ def main():
         
         print("Training the "+model_name+" Classifier...")
         feature_names = feature_engineering.get_features(train_sample, isBook)
-        x_train = train_sample[feature_names].values
-        y_train = train_sample[training_feature].values
-        classifier = model.model()
-        classifier.fit(x_train, y_train)
+        x = train_sample[feature_names].values
+        y = train_sample[training_feature].values
+        x_train, x_test, y_train, y_test = model_selection.train_test_split(x, y, test_size=0.33, random_state=42)
         
-        # print the time interval
-        print("Saving the classifier...")
-        Data_importer.dump_model(classifier, isBook)
+        
+        model.model(x_train, x_test, y_train, y_test, isBook)
+        #classifier.fit(x_train, y_train)
+        
+       
 
 if __name__=="__main__":
     main()
