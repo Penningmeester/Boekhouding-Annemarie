@@ -12,6 +12,14 @@ Date:
 			Tijn Wijdoogen
 			Winsen Duker
 """
+
+import Data_importer
+import seaborn as sns
+import matplotlib.pyplot as plt
+import numpy as np
+import pandas as pd
+sns.set_style("darkgrid")
+sns.set_palette("Set1", n_colors=8, desat=.5)
 #==============================================================================
 # Explore rates
 #==============================================================================
@@ -42,6 +50,7 @@ def nanrate(train, valname):
     plt.title("Click and booking rate of non-NA samples and Null features, wrt:"+valname)
     plt.show()
     
+    
 def ratedist(train, name, steps, navalue):
     ## train, dataset name
     ## name, the feature name
@@ -49,7 +58,7 @@ def ratedist(train, name, steps, navalue):
     ## navalue, a special value for the na samples, can be -1, or -100
     print("Here the NULL values are classed as "+str(navalue))
     train[name+"_step"] = np.round(train[name]/steps)
-    train[name+"_step"][pd.isnull(train[name])] = navalue
+    train.loc[pd.isnull(train[name]),'%s_%s'] = navalue %(name,steps)
     rate_list = []
     c_per_list = []
     b_per_list = []
@@ -225,19 +234,21 @@ def User_explorer(train):
     print("Percentage missing Price_usd:", price_usd.isnull().sum()/len(train))
 
 ## NEW FEATURE - 
-    mean_spend_country = train[['prop_country_id', 'price_usd']].groupby(['prop_country_id'], as_index=False).mean()
-    
-    test = train[['prop_id','prop_country_id','price_usd']]
-    if test['price_usd'] > 
-    
-    price_per_property = train[['prop_id', 'price_usd']].groupby(['prop_id'], as_index=False)
-    for i in range(0,len(mean_spend_country)):
-        check = train['prop_country_id'] == mean_spend_country['prop_country_id'][i]
-        if check['price_usd'] > mean_spend_country['price_usd'][i]:
-            train['new'] = 1
-        else:
-            train['new'] = 0
-
+#==============================================================================
+#     mean_spend_country = train[['prop_country_id', 'price_usd']].groupby(['prop_country_id'], as_index=False).mean()
+#     
+#     test = train[['prop_id','prop_country_id','price_usd']]
+#     if test['price_usd'] > 
+#     
+#     price_per_property = train[['prop_id', 'price_usd']].groupby(['prop_id'], as_index=False)
+#     for i in range(0,len(mean_spend_country)):
+#         check = train['prop_country_id'] == mean_spend_country['prop_country_id'][i]
+#         if check['price_usd'] > mean_spend_country['price_usd'][i]:
+#             train['new'] = 1
+#         else:
+#             train['new'] = 0
+# 
+#==============================================================================
 
 ## Investigate Distance user and location
     orig_dest_dist = train["orig_destination_distance"]
