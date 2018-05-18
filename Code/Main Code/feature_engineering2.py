@@ -1,5 +1,6 @@
 import pandas as pd
 import numpy as np
+from datetime import datetime as dt
 
 def get_features(train, isBook=True):
     feature_names = list(train.columns)[:27]
@@ -21,6 +22,8 @@ def get_features(train, isBook=True):
     feature_names.append("comp_rate_sum")
     feature_names.append("comp_inv_sum")
     feature_names.append("Price_pp_usd")
+    feature_names.append('Month')
+    feature_names.append('Day')
 
     return feature_names
 
@@ -30,6 +33,7 @@ def feature_eng(train):
     train['prop_review_score'].fillna(0, inplace=True)
         
     train['Price_pp_usd'] = train['price_usd'] / (train['srch_adults_count'] + train['srch_children_count'])
+<<<<<<< HEAD
 
     # Winsen
     vist_hist_rating = vist_hist_rating.fillna(0, inplace=True)
@@ -73,6 +77,10 @@ def feature_eng(train):
     for i in range(2,9):
         train['comp_rate_sum'] += train['comp'+str(i)+'_rate']
     train['comp_rate_sum'].describe()
+=======
+    train['Month'] = train.date_time.dt.month
+    train['Day'] = train.date_time.dt.weekday
+>>>>>>> a1be3d81e4285e9d2855ed46dc98732412125696
     
     ratedist(train, "comp_rate_sum", 1, -7)
 
