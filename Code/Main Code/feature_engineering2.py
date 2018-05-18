@@ -1,5 +1,6 @@
 import pandas as pd
 import numpy as np
+from datetime import datetime as dt
 
 def get_features(train, isBook=True):
     feature_names = list(train.columns)[:27]
@@ -21,6 +22,8 @@ def get_features(train, isBook=True):
     feature_names.append("comp_rate_sum")
     feature_names.append("comp_inv_sum")
     feature_names.append("Price_pp_usd")
+    feature_names.append('Month')
+    feature_names.append('Day')
 
     return feature_names
 
@@ -38,7 +41,8 @@ def feature_eng(train):
     train["visitor_hist_adr_usd"].fillna(0, inplace=True)
     train['visitor_hist_starrating_bool'] = pd.notnull(train['visitor_hist_starrating'])
     train['Price_pp_usd'] = train['price_usd'] / (train['srch_adults_count'] + train['srch_children_count'])
-
+    train['Month'] = train.date_time.dt.month
+    train['Day'] = train.date_time.dt.weekday
     
 
 
