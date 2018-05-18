@@ -60,7 +60,7 @@ def main():
     # Import data
     #test,train  = importdatabase()
     
-    Data_exploration(train)
+    
   
     print('\nFinished code')
 

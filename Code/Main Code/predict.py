@@ -13,7 +13,7 @@ def main():
     
     click_names = feature_engineering.get_features(test, False)
     test_click =  test[click_names]
-    click_predict = model.predict_proba(test_click.values)[:,1]
+    click_predict = model.predict(test_click.values)
     click_predict = list(click_predict*-1)
     print('Predicted Clicking probability')
     
@@ -23,7 +23,7 @@ def main():
     
     book_names = feature_engineering.get_features(test, True)
     test_book =  test[book_names]
-    book_predict = model.predict_proba(test_book.values)[:,1]
+    book_predict = model.predict(test_book.values)
     book_predict = list(book_predict*-1)
     print('Predicted the Booking probability')
     
