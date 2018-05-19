@@ -17,8 +17,8 @@ def get_features(train, isBook=True):
     feature_names.remove("visitor_hist_starrating")
     if isBook:
         feature_names.append("visitor_hist_starrating_bool")
-    feature_names.append("comp_rate_sum")
-    feature_names.append("comp_inv_sum")
+    feature_names.append("sum_comp_rate")
+    feature_names.append("sum_comp_inv")
     return feature_names
 
 
@@ -34,23 +34,23 @@ def feature_eng(train):
     train["visitor_hist_adr_usd"].fillna(0, inplace=True)
     train['visitor_hist_starrating_bool'] = pd.notnull(train['visitor_hist_starrating'])
 
-    # add feature: comp_rate_sum
+    # add feature: sum_comp_rate
     for i in range(1,9):
         train['comp'+str(i)+'_rate'].fillna(0, inplace=True)
-    train['comp_rate_sum'] = train['comp1_rate']
+    train['sum_comp_rate'] = train['comp1_rate']
     for i in range(2,9):
-        train['comp_rate_sum'] += train['comp'+str(i)+'_rate']
+        train['sum_comp_rate'] += train['comp'+str(i)+'_rate']
 
-    # add feature: comp_rate_sum
+    # add feature: sum_comp_rate
     for i in range(1,9):
         train['comp'+str(i)+'_inv'].fillna(0, inplace=True)
         train['comp'+str(i)+'_inv'][train['comp'+str(i)+'_inv']==1] = 10
         train['comp'+str(i)+'_inv'][train['comp'+str(i)+'_inv']==-1] = 1
         train['comp'+str(i)+'_inv'][train['comp'+str(i)+'_inv']==0] = -1
         train['comp'+str(i)+'_inv'][train['comp'+str(i)+'_inv']==10] = 0
-    train['comp_inv_sum'] = train['comp1_inv']
+    train['sum_comp_inv'] = train['comp1_inv']
     for i in range(2,9):
-        train['comp_inv_sum'] += train['comp'+str(i)+'_inv']
+        train['sum_comp_inv'] += train['comp'+str(i)+'_inv']
 
 def main(train):
 
