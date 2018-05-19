@@ -38,7 +38,7 @@ def model(x_train, x_test, y_train, y_test, isBook):
     params['num_leaves'] = 10
     params['min_data'] = 50
     params['max_depth'] = 10
-    classifier = lgb.train(params, lgb_train, num_boost_round=3000, 
+    classifier = lgb.train(params, lgb_train, num_boost_round=5000, 
                     verbose_eval=20, early_stopping_rounds=40, valid_sets=lgb_eval)
 
         
