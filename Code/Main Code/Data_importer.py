@@ -22,7 +22,7 @@ def load_train_set():
     return df
 
 def load_test_set():
-    print("Loading training set")
+    print("Loading test set")
 
     location = location_lookup()["test_path"]
     df = pd.read_hdf(location)
