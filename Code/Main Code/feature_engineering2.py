@@ -25,8 +25,8 @@ def get_features(train, isBook=True):
 def feature_eng(train):
 
     # deal with NAs in hotels's infor
-    train['prop_review_score'].fillna(3, inplace=True)
-    train['prop_review_score'][train['prop_review_score']==0]=train.prop_review_score.mean()
+    train['prop_review_score'].fillna(trainprop_review_score.median(), inplace=True)
+    train['prop_review_score'][train['prop_review_score']==0]=train.prop_review_score.median()
     train["prop_location_score2"].fillna(0, inplace=True)
     avg_srch_score = train["srch_query_affinity_score"].mean()
     train["srch_query_affinity_score"].fillna(avg_srch_score, inplace=True)
