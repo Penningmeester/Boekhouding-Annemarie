@@ -2,7 +2,6 @@ import Data_importer
 import model
 import random
 import feature_engineering2 as feature_engineering
-import lightgbm as lgb
 from sklearn import model_selection
 
 

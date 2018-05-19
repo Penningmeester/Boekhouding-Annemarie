@@ -10,9 +10,11 @@ def main():
     model_training.main()
     print('Finished training model in:\n', dt.now()-tstart)
     print('\n predicting outcome of test set:')
-    tstart2 = dt.now()
-    predict.main()
-    print('\nFinished predicting in:\n',dt.now()-tstart2)
+    bool_ = input('start predicting? Y/N?')
+    if bool_=='Y':
+        tstart2 = dt.now()
+        predict.main()
+        print('\nFinished predicting in:\n',dt.now()-tstart2)
     print('\nFinished whole program in:\n',dt.now()-tstart)
 
     print('Predictions can be found in:', Data_importer.location_lookup()["submission_path"])

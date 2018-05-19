@@ -1,8 +1,7 @@
-from sklearn.ensemble import RandomForestClassifier
-from sklearn.ensemble import GradientBoostingClassifier
 import lightgbm as lgb
 import Data_importer
 from sklearn import model_selection
+from sklearn.grid_search import GridSearchCV
 
 def model(x_train, x_test, y_train, y_test, isBook):
     # classifier =  RandomForestClassifier(n_estimators=50, 
@@ -30,19 +29,41 @@ def model(x_train, x_test, y_train, y_test, isBook):
     lgb_train = lgb.Dataset(x_train, y_train)
     lgb_eval = lgb.Dataset(x_test, y_test, reference=lgb_train)
     params = {}
-    params['learning_rate'] = 0.003
-    params['boosting_type'] = 'gbdt'
-    params['objective'] = 'binary'
-    params['metric'] = 'binary_logloss'
-    params['sub_feature'] = 0.5
-    params['num_leaves'] = 10
-    params['min_data'] = 50
-    params['max_depth'] = 10
-    classifier = lgb.train(params, lgb_train, num_boost_round=3000, 
-                    verbose_eval=20, early_stopping_rounds=40, valid_sets=lgb_eval)
+    params['boosting_type']= 'gbdt',
+    params['objective']= 'binary',
+    params['metric']= 'binary_logloss',
+    params['num_leaves']= 100,
+    params['learning_rate']= 0.032,
+    params['feature_fraction']= 0.9,
+    params['bagging_fraction']= .9,
+    params['bagging_freq']= 70,
+    params['verbose']= 100,
+    
+    classifier = lgb.train(params,lgb_train, 
+                            verbose_eval=20, 
+                            early_stopping_rounds=40, 
+                            valid_sets=lgb_eval, 
+                            num_boost_round=2000)
 
-        
     # print the time interval
     print("Saving the classifier...")
     Data_importer.dump_model(classifier, isBook)
     print('classifier saved')
+
+if __name__=="__main__":
+    model(x_train, x_test, y_train, y_test, isBook)
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
