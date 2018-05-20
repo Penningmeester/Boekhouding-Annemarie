@@ -15,24 +15,25 @@ def get_features(train, isBook=True):
     feature_names.remove("date_time")
     feature_names.remove("srch_id")
     feature_names.remove("visitor_hist_starrating")
+    feature_names.remove("visitor_hist_adr_usd") #new
     if isBook:
-        feature_names.append("visitor_hist_starrating_bool")
+        feature_names.append("bool_visitor_hist_starrating")
+        feature_names.append("bool_visitor_hist_adr_usd") #new
     feature_names.append("sum_comp_rate")
     feature_names.append("sum_comp_inv")
     return feature_names
 
-
 def feature_eng(train):
 
     # deal with NAs in hotels's infor
-    train['prop_review_score'].fillna(trainprop_review_score.median(), inplace=True)
+    train['prop_review_score'].fillna(train['prop_review_score'].median(), inplace=True)
     train['prop_review_score'][train['prop_review_score']==0]=train.prop_review_score.median()
     train["prop_location_score2"].fillna(0, inplace=True)
-    avg_srch_score = train["srch_query_affinity_score"].mean()
-    train["srch_query_affinity_score"].fillna(avg_srch_score, inplace=True)
-    train["orig_destination_distance"].fillna(1509,inplace=True)
-    train["visitor_hist_adr_usd"].fillna(0, inplace=True)
-    train['visitor_hist_starrating_bool'] = pd.notnull(train['visitor_hist_starrating'])
+    train["srch_query_affinity_score"].fillna(train["srch_query_affinity_score"].mean(), inplace=True)
+    train["orig_destination_distance"].fillna(train["orig_destination_distance"].mean(),inplace=True) #changed 75 to mean
+    #train["visitor_hist_adr_usd"].fillna(0, inplace=True)
+    train['bool_visitor_hist_adr_usd'] = train['visitor_hist_starrating'].notnull() #new
+    train['bool_visitor_hist_starrating'] = train['visitor_hist_starrating'].notnull()
 
     # add feature: sum_comp_rate
     for i in range(1,9):
