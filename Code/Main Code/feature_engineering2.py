@@ -27,7 +27,7 @@ def feature_eng(train):
 
     # deal with NAs in hotels's infor
     train['prop_review_score'].fillna(train['prop_review_score'].median(), inplace=True)
-    train['prop_review_score'][train['prop_review_score']==0]=train.prop_review_score.median()
+    train.loc[train['prop_review_score']==0,'prop_review_score']=train.prop_review_score.median()
     train["prop_location_score2"].fillna(0, inplace=True)
     train["srch_query_affinity_score"].fillna(train["srch_query_affinity_score"].mean(), inplace=True)
     train["orig_destination_distance"].fillna(train["orig_destination_distance"].mean(),inplace=True) #changed 75 to mean
@@ -45,10 +45,10 @@ def feature_eng(train):
     # add feature: sum_comp_rate
     for i in range(1,9):
         train['comp'+str(i)+'_inv'].fillna(0, inplace=True)
-        train['comp'+str(i)+'_inv'][train['comp'+str(i)+'_inv']==1] = 10
-        train['comp'+str(i)+'_inv'][train['comp'+str(i)+'_inv']==-1] = 1
-        train['comp'+str(i)+'_inv'][train['comp'+str(i)+'_inv']==0] = -1
-        train['comp'+str(i)+'_inv'][train['comp'+str(i)+'_inv']==10] = 0
+        train.loc[train['comp'+str(i)+'_inv']==1,'comp'+str(i)+'_inv'] = 10
+        train.loc[train['comp'+str(i)+'_inv']==-1,'comp'+str(i)+'_inv']  = 1
+        train.loc[train['comp'+str(i)+'_inv']==0,'comp'+str(i)+'_inv']  = -1
+        train.loc[train['comp'+str(i)+'_inv']==10,'comp'+str(i)+'_inv']  = 0
     train['sum_comp_inv'] = train['comp1_inv']
     for i in range(2,9):
         train['sum_comp_inv'] += train['comp'+str(i)+'_inv']

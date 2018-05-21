@@ -2,7 +2,7 @@ import Data_importer
 import model
 import random
 import feature_engineering2 as feature_engineering
-from sklearn import model_selection
+from sklearn.model_selection import train_test_split
 
 
 
@@ -40,7 +40,7 @@ def main():
         feature_names = feature_engineering.get_features(train_sample, isBook)
         x = train_sample[feature_names].values
         y = train_sample[training_feature].values
-        x_train, x_test, y_train, y_test = model_selection.train_test_split(x, y, test_size=0.33, random_state=42)
+        x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.33, random_state=42)
         
         
         model.model(x_train, x_test, y_train, y_test, isBook)

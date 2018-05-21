@@ -1,7 +1,6 @@
 import lightgbm as lgb
 import Data_importer
 from sklearn import model_selection
-from sklearn.grid_search import GridSearchCV
 
 def model(x_train, x_test, y_train, y_test, isBook):
     # classifier =  RandomForestClassifier(n_estimators=50, 
@@ -29,15 +28,14 @@ def model(x_train, x_test, y_train, y_test, isBook):
     lgb_train = lgb.Dataset(x_train, y_train)
     lgb_eval = lgb.Dataset(x_test, y_test, reference=lgb_train)
     params = {}
-    params['boosting_type']= 'gbdt',
-    params['objective']= 'binary',
-    params['metric']= 'binary_logloss',
-    params['num_leaves']= 100,
-    params['learning_rate']= 0.032,
-    params['feature_fraction']= 0.9,
-    params['bagging_fraction']= .9,
-    params['bagging_freq']= 70,
-    params['verbose']= 100,
+    params['boosting_type']= 'gbdt'
+    params['objective']= 'binary'
+    params['metric']= 'binary_logloss'
+    params['num_leaves']= 100
+    params['learning_rate']= 0.032
+    params['feature_fraction']= 0.9
+    params['bagging_fraction']= .9
+    params['bagging_freq']= 70
     
     classifier = lgb.train(params,lgb_train, 
                             verbose_eval=20, 
