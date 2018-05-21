@@ -54,9 +54,9 @@ def feature_eng(train):
         train['sum_comp_inv'] += train['comp'+str(i)+'_inv']
 
 def main(train):
-
+    print('Starting with engineering features')
     feature_eng(train)
-    print('done engineering')
+    print('Done engineering')
 
     return train
 

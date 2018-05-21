@@ -7,6 +7,7 @@ from datetime import datetime as dt
 def main():
 
     tstart = dt.now()
+    print('Starting with program\n')
     model_training.main()
     print('Finished training model in:\n', dt.now()-tstart)
     print('\n predicting outcome of test set:')
