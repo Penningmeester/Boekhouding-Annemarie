@@ -32,7 +32,10 @@ def model(x_train, x_test, y_train, y_test, isBook):
     params['objective']= 'binary'
     params['metric']= 'binary_logloss'
     params['num_leaves']= 100
-    params['learning_rate']= 0.032
+    if isBook:
+        params['learning_rate']= 0.032
+    else:
+        params['learning_rate']= 0.032
     params['feature_fraction']= 0.9
     params['bagging_fraction']= .9
     params['bagging_freq']= 70
