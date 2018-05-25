@@ -7,11 +7,11 @@ from datetime import datetime as dt
 def main():
 
     tstart = dt.now()
-    print('Starting with program\n')
+    print('\nStarting with program\n')
     model_training.main()
     print('Finished training model in:\n', dt.now()-tstart)
-    print('\n predicting outcome of test set:')
-    bool_ = input('start predicting? Y/N?')
+    print('predicting outcome of test set:\n')
+    bool_ = input('start predicting? Y/N?\n')
     if bool_=='Y':
         tstart2 = dt.now()
         predict.main()

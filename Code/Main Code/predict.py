@@ -1,6 +1,7 @@
 import Data_importer
 import feature_engineering2 as feature_engineering
-
+import warnings
+warnings.filterwarnings(action='ignore', category=DeprecationWarning)
 
 def main():
     test = Data_importer.load_test_set()

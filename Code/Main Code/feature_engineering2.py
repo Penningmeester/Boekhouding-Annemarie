@@ -45,10 +45,10 @@ def feature_eng(train):
     # add feature: sum_comp_rate
     for i in range(1,9):
         train['comp'+str(i)+'_inv'].fillna(0, inplace=True)
-        train.loc[train['comp'+str(i)+'_inv']==1,'comp'+str(i)+'_inv'] = 10
-        train.loc[train['comp'+str(i)+'_inv']==-1,'comp'+str(i)+'_inv']  = 1
-        train.loc[train['comp'+str(i)+'_inv']==0,'comp'+str(i)+'_inv']  = -1
-        train.loc[train['comp'+str(i)+'_inv']==10,'comp'+str(i)+'_inv']  = 0
+        # train.loc[train['comp'+str(i)+'_inv']==1,'comp'+str(i)+'_inv'] = 10
+        # train.loc[train['comp'+str(i)+'_inv']==-1,'comp'+str(i)+'_inv']  = 1
+        # train.loc[train['comp'+str(i)+'_inv']==0,'comp'+str(i)+'_inv']  = -1
+        # train.loc[train['comp'+str(i)+'_inv']==10,'comp'+str(i)+'_inv']  = 0
     train['sum_comp_inv'] = train['comp1_inv']
     for i in range(2,9):
         train['sum_comp_inv'] += train['comp'+str(i)+'_inv']
