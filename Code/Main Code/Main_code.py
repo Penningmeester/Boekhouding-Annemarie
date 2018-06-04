@@ -1,4 +1,4 @@
-import model_training
+kimport model_training
 import predict
 import Data_importer
 
@@ -20,4 +20,4 @@ def main():
 
     print('Predictions can be found in:', Data_importer.location_lookup()["submission_path"])
 if __name__=="__main__":
-    main()
+    smain()
